@@ -3,12 +3,13 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  Chords you are currently practicing:
 
-  {{> hello}}
+  {{> chords_list}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="chords_list">
+  {{#each chords}}
+  	{{> chord}}
+  {{/each}}
 </template>

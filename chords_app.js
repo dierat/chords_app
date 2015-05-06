@@ -1,19 +1,9 @@
-Chords = new Mongo.collection('chords');
+Chords = new Mongo.Collection('chords');
 
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
+  Template.chords_list.helpers({
+    chords: function() {
+      return Chords.find();
     }
   });
 }
@@ -21,8 +11,8 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     if (Chords.find().count() === 0) {
-      var chords = [['C', 'G'], ['B#', 'G'], ['Am', 'E']];
-      _.each(chords, function(chord) {
+      var chords_array = [['C', 'G'], ['B#', 'G'], ['Am', 'E']];
+      _.each(chords_array, function(chord) {
         Chords.insert({
           chord1: chord[0],
           chord2: chord[1]
@@ -31,3 +21,4 @@ if (Meteor.isServer) {
     }
   });
 }
+

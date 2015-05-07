@@ -1,25 +1,25 @@
 <head>
-  <title>chords_app</title>
+	<title>chords_app</title>
 </head>
 
 <body>
-  Chord pairs you are currently practicing:
-
-  {{> chords_list}}
-
-  Start practicing a new chord pair:
-
-  <p><form class="new_chords"><input type="text" name="text" autocomplete="off" disabled="{{disabled}}" /></form></p>
+	{{> chords_list}}
 </body>
 
+
 <template name="chords_list">
-  {{#each chords}}
-  	{{> chord}}
-  {{/each}}
+	Chord pairs you are currently practicing:
+
+	{{#each chords}}
+		{{> chord}}
+  	{{/each}}
+
+  	Start practicing a new chord pair:
+
+  	<p><form class="new_chords"><input type="text" name="text" autocomplete="off" disabled="{{disabled}}" /></form></p>
 </template>
 
+
 <template name="chord">
-	<p>
-		{{chord1}} -- {{chord2}}
-	</p>
+	<p>{{chord1}} -- {{chord2}}</p>
 </template>

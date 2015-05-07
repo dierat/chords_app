@@ -3,9 +3,13 @@
 </head>
 
 <body>
-  Chords you are currently practicing:
+  Chord pairs you are currently practicing:
 
   {{> chords_list}}
+
+  Start practicing a new chord pair:
+
+  <p><form class="new_chords"><input type="text" name="text" autocomplete="off" disabled="{{disabled}}" /></form></p>
 </body>
 
 <template name="chords_list">

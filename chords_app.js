@@ -1,9 +1,10 @@
 Chords = new Mongo.Collection('chords');
 
+// sorting by user_id is disabled until users have been added
 if (Meteor.isClient) {
   Template.chords_list.helpers({
     chords: function() {
-      return Chords.find();
+      return Chords.find({/* user_id: Meteor.userId() */}, {sort: {best_num: -1}});
     }
   });
 }

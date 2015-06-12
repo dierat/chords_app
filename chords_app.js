@@ -4,7 +4,7 @@ Chords = new Mongo.Collection('chords');
 if (Meteor.isClient) {
   Template.chords_list.helpers({
     chords: function() {
-      return Chords.find({/* user_id: Meteor.userId() */}, {sort: {best_num: -1}});
+      return Chords.find({/* user_id: Meteor.userId() */}, {sort: {created: -1}});
     }
   });
   Template.chords_list.events({
@@ -13,17 +13,34 @@ if (Meteor.isClient) {
     },
     "click #submit-new-chord": function(event, template){
       var a = document.getElementById("letter1");
-      var aChoice = a.options[a.selectedIndex].value;
-      console.log("aChoice = ", aChoice);
+      var chord1Letter = a.options[a.selectedIndex].value;
+      console.log("aChoice = ", chord1Letter);
       var b = document.getElementById("type1");
-      var bChoice = b.options[b.selectedIndex].value;
-      console.log("bChoice = ", bChoice);
+      var chord1Type = b.options[b.selectedIndex].value;
+      console.log("bChoice = ", chord1Type);
       var c = document.getElementById("letter2");
-      var cChoice = c.options[c.selectedIndex].value;
-      console.log("cChoice = ", cChoice);
+      var chord2Letter = c.options[c.selectedIndex].value;
+      console.log("cChoice = ", chord2Letter);
       var d = document.getElementById("type2");
-      var dChoice = d.options[d.selectedIndex].value;
-      console.log("dChoice = ", dChoice);
+      var chord2Type = d.options[d.selectedIndex].value;
+      console.log("dChoice = ", chord2Type);
+      if (chord1Letter === chord2Letter && chord1Type === chord2Type){
+        console.log("The chords in your pair can not be identical.");
+      // } else if (){
+
+      } else {
+        Chords.insert({
+          user_id: null,
+          chord1: {letter: chord1Letter, type: chord1Type},
+          chord2: {letter: chord2Letter, type: chord2Type},
+          created: new Date(),
+          last_practice: null,
+          total_practice: 0,
+          best_num: null,
+          average_num: null,
+          practiceHistory: {}
+        });
+      }
       // first check that the two pairs are not exactly the same
       // then check if that chord pair is already listed in the collection (first look to see if chord1 exists in the collection as chord1, and if it does, is the corresponding chord2 also the same as the one being selected now. then reverse the process and check if chord2 exists in the collection as chord1 and, if it does, if its corresponding chord2 is the same as chord1 being submitted. unless there is a way to do both at once?)
       // if neither of those checks return true, submit this chord pair into the collection using the pattern shown in Meteor.startup
@@ -34,18 +51,21 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     if (Chords.find().count() === 0) {
-      var chords_array = [['C', 'G'], ['B#', 'G'], ['Am', 'E']];
+      var chords_array = [['C', 'Major', 'G', 'Major'], ['B#', 'Major', 'G', 'Major'], ['A', 'Minor', 'E', 'Minor']];
       _.each(chords_array, function(chord) {
         Chords.insert({
           user_id: null,
-          chord1: chord[0],
-          chord2: chord[1],
+          // each chord needs to be an object that holds a letter and a type
+          chord1Letter: chord[0], 
+          chord1Type: chord[1],
+          chord2Letter: chord[2], 
+          chord2Type: chord[3],
           created: new Date(),
           last_practice: null,
           total_practice: 0,
           best_num: null,
           average_num: null,
-          practice: {}
+          practiceHistory: {}
         });
       });
     }

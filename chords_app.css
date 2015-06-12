@@ -1,1 +1,12 @@
 /* CSS declarations go here */
+#new-chord-link {
+	cursor: pointer;
+}
+
+#chords-dropdown-menu {
+	display: none;
+}
+
+#chords-list-title {
+	margin-top: 40px;
+}

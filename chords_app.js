@@ -7,6 +7,11 @@ if (Meteor.isClient) {
       return Chords.find({/* user_id: Meteor.userId() */}, {sort: {best_num: -1}});
     }
   });
+  Template.chords_list.events({
+    "click #new-chord-link": function(event, template){
+      $("#chords-dropdown-menu").slideToggle();
+    }
+  });
 }
 
 if (Meteor.isServer) {

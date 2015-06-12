@@ -8,17 +8,15 @@
 
 
 <template name="chords_list">
+	<span id="new-chord-link">Add a new chord pair</span>
+
+  	{{> new_chords}}
+
 	Chord pairs you are currently practicing:
 
 	{{#each chords}}
 		{{> chord}}
   	{{/each}}
-
-  	Start practicing a new chord pair:
-
-  	<p>
-  		{{> new_chords}}
-  	</p>
 </template>
 
 

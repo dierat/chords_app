@@ -27,8 +27,10 @@ if (Meteor.isClient) {
       } else {
         Chords.insert({
           user_id: null,
-          chord1: {letter: chord1Letter, type: chord1Type},
-          chord2: {letter: chord2Letter, type: chord2Type},
+          chord1Letter: chord1Letter, 
+          chord1Type: chord1Type,
+          chord2Letter: chord2Letter, 
+          chord2Type: chord2Type,
           created: new Date(),
           last_practice: null,
           total_practice: 0,

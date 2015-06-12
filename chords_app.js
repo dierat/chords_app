@@ -24,6 +24,9 @@ if (Meteor.isClient) {
       var d = document.getElementById("type2");
       var dChoice = d.options[d.selectedIndex].value;
       console.log("dChoice = ", dChoice);
+      // first check that the two pairs are not exactly the same
+      // then check if that chord pair is already listed in the collection (first look to see if chord1 exists in the collection as chord1, and if it does, is the corresponding chord2 also the same as the one being selected now. then reverse the process and check if chord2 exists in the collection as chord1 and, if it does, if its corresponding chord2 is the same as chord1 being submitted. unless there is a way to do both at once?)
+      // if neither of those checks return true, submit this chord pair into the collection using the pattern shown in Meteor.startup
     }
   });
 }

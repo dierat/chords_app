@@ -23,5 +23,21 @@
 
 
 <template name="chord">
-	<p>{{chord1}} -- {{chord2}}</p>
+	<p>
+		<div class="chords">{{chord1}} -- {{chord2}}</div>
+		<span class="best-time">Best total:
+			{{#if best_num}} 
+				{{best_num}}
+			{{else}}
+				none yet
+			{{/if}}
+		</span>
+		<span class="last-practice">Last practice: 
+			{{#if last_practice}}
+				{{last_practice}}
+			{{else}}
+				never
+			{{/if}}
+		</span>
+	</p>
 </template>

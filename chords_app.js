@@ -11,6 +11,9 @@ if (Meteor.isClient) {
     "click .new-chord-link": function(event, template){
       $(".chords-dropdown-menu").slideToggle();
     },
+    "click .show-details-link": function(event, template){
+      $(".more-chord-details").slideToggle();
+    },
     "click .submit-new-chord": function(event, template){
       var a = document.getElementById("letter1");
       var chord1Letter = a.options[a.selectedIndex].value;

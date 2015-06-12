@@ -30,7 +30,8 @@ h1 {
 	color: #ABD1B5;
 }
 
-.chords-dropdown-menu {
+.chords-dropdown-menu,
+.more-chord-details {
 	display: none;
 }
 

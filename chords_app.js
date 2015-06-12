@@ -14,20 +14,16 @@ if (Meteor.isClient) {
     "click #submit-new-chord": function(event, template){
       var a = document.getElementById("letter1");
       var chord1Letter = a.options[a.selectedIndex].value;
-      console.log("aChoice = ", chord1Letter);
       var b = document.getElementById("type1");
       var chord1Type = b.options[b.selectedIndex].value;
-      console.log("bChoice = ", chord1Type);
       var c = document.getElementById("letter2");
       var chord2Letter = c.options[c.selectedIndex].value;
-      console.log("cChoice = ", chord2Letter);
       var d = document.getElementById("type2");
       var chord2Type = d.options[d.selectedIndex].value;
-      console.log("dChoice = ", chord2Type);
       if (chord1Letter === chord2Letter && chord1Type === chord2Type){
         console.log("The chords in your pair can not be identical.");
       // } else if (){
-
+        // check if that chord pair is already listed in the collection (first look to see if chord1 exists in the collection as chord1, and if it does, is the corresponding chord2 also the same as the one being selected now. then reverse the process and check if chord2 exists in the collection as chord1 and, if it does, if its corresponding chord2 is the same as chord1 being submitted. unless there is a way to do both at once?)
       } else {
         Chords.insert({
           user_id: null,
@@ -41,9 +37,6 @@ if (Meteor.isClient) {
           practiceHistory: {}
         });
       }
-      // first check that the two pairs are not exactly the same
-      // then check if that chord pair is already listed in the collection (first look to see if chord1 exists in the collection as chord1, and if it does, is the corresponding chord2 also the same as the one being selected now. then reverse the process and check if chord2 exists in the collection as chord1 and, if it does, if its corresponding chord2 is the same as chord1 being submitted. unless there is a way to do both at once?)
-      // if neither of those checks return true, submit this chord pair into the collection using the pattern shown in Meteor.startup
     }
   });
 }
@@ -55,7 +48,6 @@ if (Meteor.isServer) {
       _.each(chords_array, function(chord) {
         Chords.insert({
           user_id: null,
-          // each chord needs to be an object that holds a letter and a type
           chord1Letter: chord[0], 
           chord1Type: chord[1],
           chord2Letter: chord[2], 

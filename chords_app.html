@@ -1,23 +1,38 @@
 <head>
 	<title>chords_app</title>
 </head>
-
 <body>
-	{{> chords_list}}
 </body>
 
 
+
+<template name="layout">
+	{{> header}}
+	<div class="content">
+		{{> yield}}
+	</div>
+</template>
+
+
+
+<template name="header">
+	<header>Chord practice log</header>
+</template>
+
+
+
 <template name="chords_list">
-	<span id="new-chord-link">Add a new chord pair</span>
+	<div class="link new-chord-link">Add a new chord pair</div>
 
   	{{> new_chords}}
 
-	<div id="chords-list-title">Chord pairs you are currently practicing:</div>
+	<div class="chords-list-title">Chord pairs you are currently practicing:</div>
 
 	{{#each chords}}
 		{{> chord}}
   	{{/each}}
 </template>
+
 
 
 <template name="chord">
@@ -39,5 +54,20 @@
 				never
 			{{/if}}
 		</span>
+		<div class="link show-details-link">Show more details</div>
+		<div class="more-chord-details">
+			<span class="created">
+				<!-- use moment.js to reformat the date object -->
+				Created: {{created_at}}
+			</span>
+		</div>
 	</p>
+</template>
+
+
+
+<template name="new_practice">
+	<div>Enter the number of changes you made between the two chords in one minute</div>
+	<input type="text" value="num_changes" id="num_changes" placeholder="Add number of changes">
+	<button class="submit_new_practice">Submit new practice info</button>
 </template>

@@ -8,10 +8,10 @@ if (Meteor.isClient) {
     }
   });
   Template.chords_list.events({
-    "click #new-chord-link": function(event, template){
-      $("#chords-dropdown-menu").slideToggle();
+    "click .new-chord-link": function(event, template){
+      $(".chords-dropdown-menu").slideToggle();
     },
-    "click #submit-new-chord": function(event, template){
+    "click .submit-new-chord": function(event, template){
       var a = document.getElementById("letter1");
       var chord1Letter = a.options[a.selectedIndex].value;
       var b = document.getElementById("type1");

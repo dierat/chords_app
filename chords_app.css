@@ -1,12 +1,39 @@
-/* CSS declarations go here */
-#new-chord-link {
-	cursor: pointer;
+
+body {
+	margin: 0;
+	color: #301014;
 }
 
-#chords-dropdown-menu {
+.content {
+	max-width: 300px;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+
+header {
+	width: 100%;
+	position: absolute;
+	background-color: #79B791;
+}
+
+h1 {
+	text-align: center;
+	color: #FFF;
+}
+
+.link {
+	cursor: pointer;
+	color: #79B791;
+}
+
+.link:hover {
+	color: #ABD1B5;
+}
+
+.chords-dropdown-menu {
 	display: none;
 }
 
-#chords-list-title {
+.chords-list-title {
 	margin-top: 40px;
 }

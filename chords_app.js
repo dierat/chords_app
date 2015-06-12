@@ -10,6 +10,20 @@ if (Meteor.isClient) {
   Template.chords_list.events({
     "click #new-chord-link": function(event, template){
       $("#chords-dropdown-menu").slideToggle();
+    },
+    "click #submit-new-chord": function(event, template){
+      var a = document.getElementById("letter1");
+      var aChoice = a.options[a.selectedIndex].value;
+      console.log("aChoice = ", aChoice);
+      var b = document.getElementById("type1");
+      var bChoice = b.options[b.selectedIndex].value;
+      console.log("bChoice = ", bChoice);
+      var c = document.getElementById("letter2");
+      var cChoice = c.options[c.selectedIndex].value;
+      console.log("cChoice = ", cChoice);
+      var d = document.getElementById("type2");
+      var dChoice = d.options[d.selectedIndex].value;
+      console.log("dChoice = ", dChoice);
     }
   });
 }

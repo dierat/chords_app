@@ -2,6 +2,9 @@ Chords = new Mongo.Collection('chords');
 
 // sorting by user_id is disabled until users have been added
 if (Meteor.isClient) {
+  Template.registerHelper('formatDate', function(date) {
+    return moment(date).fromNow();
+  });
   Template.chords_list.helpers({
     chords: function() {
       return Chords.find({/* user_id: Meteor.userId() */}, {sort: {created: -1}});
@@ -12,6 +15,8 @@ if (Meteor.isClient) {
       $(".chords-dropdown-menu").slideToggle();
     },
     "click .show-details-link": function(event, template){
+      // console.log($(this).closest(".chord-item").find(".more-chord-details"));
+      // $(this).closest(".chord-item").find(".more-chord-details").slideToggle();
       $(".more-chord-details").slideToggle();
     },
     "click .submit-new-chord": function(event, template){

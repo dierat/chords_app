@@ -36,7 +36,7 @@
 
 
 <template name="chord">
-	<p>
+	<p class="chord-item">
 		<div class="chordNames">
 			{{chord1Letter}} {{chord1Type}} -- {{chord2Letter}} {{chord2Type}}
 		</div>
@@ -57,8 +57,7 @@
 		<div class="link show-details-link">Show more details</div>
 		<div class="more-chord-details">
 			<span class="created">
-				<!-- use moment.js to reformat the date object -->
-				Created: {{created_at}}
+				Created: {{formatDate created_at}}
 			</span>
 		</div>
 	</p>

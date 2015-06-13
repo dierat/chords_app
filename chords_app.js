@@ -5,21 +5,22 @@ if (Meteor.isClient) {
   Template.registerHelper('formatDate', function(date) {
     return moment(date).fromNow();
   });
+
   Template.chords_list.helpers({
     chords: function() {
-      return Chords.find({/* user_id: Meteor.userId() */}, {sort: {created: -1}});
+      var current_chords = Chords.find({/* user_id: Meteor.userId() */}, {sort: {created_at: -1}});
+      if (!current_chords){return "None yet! Add a new chord pair above to get started."}
+      else {return current_chords;}
     }
   });
+
   Template.chords_list.events({
     "click .new-chord-link": function(event, template){
       $(".chords-dropdown-menu").slideToggle();
-    },
-    "click .show-details-link": function(event, template){
-      $(event.target).siblings(".more-chord-details").slideToggle();
-    },
-    "click .add-practice-link": function(event, template){
-      $(event.target).siblings(".add-new-practice").slideToggle();
-    },
+    }
+  });
+
+  Template.new_chords.events({
     "click .submit-new-chord": function(event, template){
       var a = document.getElementById("letter1");
       var chord1Letter = a.options[a.selectedIndex].value;
@@ -50,7 +51,28 @@ if (Meteor.isClient) {
       }
     }
   });
+
+  Template.chord.events({
+    "click .show-details-link": function(event, template){
+      $(event.target).siblings(".more-chord-details").slideToggle();
+    },
+    "click .add-practice-link": function(event, template){
+      $(event.target).siblings(".add-new-practice").slideToggle();
+    },
+    "submit .num-changes": function(event){
+      console.log("trying to submit");
+      var num_changes = event.target.text.value;
+      console.log(num_changes);
+      // find the id of the chord pair in the Chords collection
+      // update the document's last_practice and total_practice values
+      // if num_changes > best_num, override best_num value
+      // calculate new average_num and override that value
+      //$(".num-changes").value('');
+    }
+  });
 }
+
+
 
 if (Meteor.isServer) {
   Meteor.startup(function () {

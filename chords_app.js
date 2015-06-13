@@ -15,9 +15,7 @@ if (Meteor.isClient) {
       $(".chords-dropdown-menu").slideToggle();
     },
     "click .show-details-link": function(event, template){
-      // console.log($(this).closest(".chord-item").find(".more-chord-details"));
-      // $(this).closest(".chord-item").find(".more-chord-details").slideToggle();
-      $(".more-chord-details").slideToggle();
+      $(event.target).siblings(".more-chord-details").slideToggle();
     },
     "click .submit-new-chord": function(event, template){
       var a = document.getElementById("letter1");

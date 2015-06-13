@@ -2,28 +2,45 @@
 body {
 	margin: 0;
 	color: #301014;
+	font-size: 18px;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .content {
-	max-width: 300px;
+	max-width: 260px;
 	margin: 0 auto;
-	padding-top: 100px;
+	padding-top: 115px;
 }
 
 header {
 	width: 100%;
 	position: absolute;
 	background-color: #79B791;
+	padding: 10px;
 }
 
 h1 {
+	margin: 0;
 	text-align: center;
 	color: #FFF;
+	font-family: 'Bad Script', cursive;
+}
+
+.chords-list-title {
+	color: #704539;
+	font-family: 'Bad Script', cursive;
+}
+
+.details {
+	color: #79B791;
+	font-size: 15px;
+	font-family: 'Bad Script', cursive;
 }
 
 .link {
 	cursor: pointer;
-	color: #79B791;
+	color: #2F73D8;
+	font-size: 13px;
 }
 
 .link:hover {
@@ -36,5 +53,5 @@ h1 {
 }
 
 .chords-list-title {
-	margin-top: 40px;
+	margin-top: 20px;
 }

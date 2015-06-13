@@ -17,6 +17,7 @@
 
 <template name="header">
 	<header><h1>Chord practice log</h1></header>
+	<link href='http://fonts.googleapis.com/css?family=Bad+Script|Montserrat' rel='stylesheet' type='text/css'>
 </template>
 
 
@@ -26,7 +27,7 @@
 
   	{{> new_chords}}
 
-	<div class="chords-list-title">Chord pairs you are currently practicing:</div>
+	<div class="chords-list-title">Chord pairs I am currently practicing:</div>
 
 	{{#each chords}}
 		{{> chord}}
@@ -40,14 +41,14 @@
 		<div class="chordNames">
 			{{chord1Letter}} {{chord1Type}} -- {{chord2Letter}} {{chord2Type}}
 		</div>
-		<span class="best-time">Best total:
+		<span class="details">Best total:
 			{{#if best_num}} 
 				{{best_num}}
 			{{else}}
 				none yet
 			{{/if}}
 		</span>
-		<span class="last-practice">Last practice: 
+		<span class="details">Last practice: 
 			{{#if last_practice}}
 				{{last_practice}}
 			{{else}}
@@ -56,7 +57,7 @@
 		</span>
 		<div class="link show-details-link">Show more details</div>
 		<div class="more-chord-details">
-			<span class="created">
+			<span class="details">
 				Created: {{formatDate created_at}}
 			</span>
 		</div>

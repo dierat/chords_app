@@ -37,18 +37,34 @@ h1 {
 	font-family: 'Bad Script', cursive;
 }
 
-.link {
+.link,
+button {
 	cursor: pointer;
-	color: #2F73D8;
 	font-size: 13px;
+}
+
+.link {
+	color: #2F73D8;
 }
 
 .link:hover {
 	color: #ABD1B5;
 }
 
+button {
+	border: none;
+	background-color: #2F73D8;
+	color: #FFF;
+	border-radius: 2px;
+}
+
+button:hover {
+	background-color: #ABD1B5;
+}
+
 .chords-dropdown-menu,
-.more-chord-details {
+.more-chord-details,
+.add-new-practice {
 	display: none;
 }
 

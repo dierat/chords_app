@@ -39,7 +39,7 @@
 <template name="chord">
 	<p class="chord-item">
 		<div class="chordNames">
-			{{chord1Letter}} {{chord1Type}} -- {{chord2Letter}} {{chord2Type}}
+			{{chord1Letter}} {{chord1Type}} - {{chord2Letter}} {{chord2Type}}
 		</div>
 		<span class="details">Best total:
 			{{#if best_num}} 
@@ -60,6 +60,11 @@
 			<span class="details">
 				Created: {{formatDate created_at}}
 			</span>
+		</div>
+		<div class="link add-practice-link">Add new practice session info</div>
+		<div class="add-new-practice">
+			<input type="text" id="num_changes" placeholder="Add number of changes">
+			<button class="submit_new_practice">Submit new practice info</button>
 		</div>
 	</p>
 </template>

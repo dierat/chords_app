@@ -17,6 +17,9 @@ if (Meteor.isClient) {
     "click .show-details-link": function(event, template){
       $(event.target).siblings(".more-chord-details").slideToggle();
     },
+    "click .add-practice-link": function(event, template){
+      $(event.target).siblings(".add-new-practice").slideToggle();
+    },
     "click .submit-new-chord": function(event, template){
       var a = document.getElementById("letter1");
       var chord1Letter = a.options[a.selectedIndex].value;

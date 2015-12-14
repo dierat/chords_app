@@ -60,14 +60,16 @@ if (Meteor.isClient) {
       $(event.target).siblings(".add-new-practice").slideToggle();
     },
     "submit .num-changes": function(event){
-      console.log("trying to submit");
-      var num_changes = event.target.text.value;
-      console.log(num_changes);
-      // find the id of the chord pair in the Chords collection
-      // update the document's last_practice and total_practice values
-      // if num_changes > best_num, override best_num value
-      // calculate new average_num and override that value
-      //$(".num-changes").value('');
+      Meteor.setTimeout(function(){
+        var num_changes = event.target.text.value;
+        if (num_changes.length > 0 && typeof num_changes === 'number'){
+          Chords.update(this._id, {$inc: {total_practice: 1}, $set: {last_practice: new Date()} });
+        }
+        // if num_changes > best_num, override best_num value
+        // calculate new average_num and override that value
+        // event.target.text.value === '';
+      }.bind(this), 2000);
+      return false;
     }
   });
 }
